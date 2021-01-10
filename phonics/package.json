@@ -1,5 +1,5 @@
 {
-  "name": "Phonics",
+  "name": "phonics",
   "version": "0.0.1",
   "description": "The bridge between the Audio Plugin and Frontend",
   "main": "index.js",
