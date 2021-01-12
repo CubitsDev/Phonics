@@ -1,1 +1,1 @@
-exports.RequestPlayer = require('./RequestPlayer')
+exports.RequestPlayer = require("./RequestPlayer").RequestPlayer;

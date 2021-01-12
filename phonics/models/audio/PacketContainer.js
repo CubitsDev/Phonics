@@ -1,7 +1,9 @@
 const audioPackets = require("../../utils/packetid").audioPackets;
+const BasePacket = require("../BasePacket").BasePacket;
 
 class PacketContainer extends BasePacket {
   constructor(uuid, container) {
+    super();
     this.id = audioPackets.CONTAINER;
     this.uuid = uuid;
     this.container = container;
@@ -11,12 +13,6 @@ class PacketContainer extends BasePacket {
   }
   getContainer() {
     return container;
-  }
-  fromJSON(obj) {
-    this.id = parseInt(obj.id);
-    this.uuid = obj.uuid.toString();
-    this.container = obj.container.toString();
-    return this;
   }
   getJSON() {
     let obj = {};
@@ -30,3 +26,5 @@ class PacketContainer extends BasePacket {
     return obj;
   }
 }
+
+exports.PacketContainer = PacketContainer;

@@ -1,7 +1,9 @@
 const { audioPackets } = require("../../utils/packetid");
+const BasePacket = require("../BasePacket").BasePacket;
 
 class PacketLogin extends BasePacket {
   constructor(version, token) {
+    super();
     this.id = audioPackets.LOGIN;
     this.version = version;
     this.token = token;
@@ -11,11 +13,6 @@ class PacketLogin extends BasePacket {
   }
   getToken() {
     return this.token;
-  }
-  fromJSON(obj) {
-    this.version = obj.get("version").getAsInt();
-    this.token = obj.get("token").getAsString();
-    return this;
   }
   getJSON() {
     let obj = {};
@@ -29,3 +26,5 @@ class PacketLogin extends BasePacket {
     return obj;
   }
 }
+
+exports.PacketLogin = PacketLogin;

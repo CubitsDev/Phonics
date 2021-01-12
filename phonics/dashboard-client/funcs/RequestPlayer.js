@@ -1,7 +1,6 @@
-import { socket } from "../client";
-import audioPacketModels from "../../models/audio";
+const audioPacketModels = require("../../models/audio");
 
-export default function RequestPlayer(token) {
-    let packet = new audioPacketModels.PacketGetPlayer(token)
-    socket.send(packet.getJson())
-}
+exports.RequestPlayer = function (token) {
+  let packet = new audioPacketModels.PacketGetPlayer(token);
+  global.ws.send(JSON.stringify(packet.getJSON()));
+};

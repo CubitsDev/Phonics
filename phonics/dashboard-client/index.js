@@ -1,5 +1,5 @@
-const logger = require('../utils/logger')
+const logger = require("../utils/logger");
 
 exports.dashConnect = function () {
-    const client = require('./client')
-}
+  const client = require("./client");
+};

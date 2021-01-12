@@ -1,0 +1,1 @@
+exports.ClientStore = new Map();
