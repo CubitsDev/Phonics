@@ -22,8 +22,14 @@ ws.on('message', function incoming(data) {
     case audioPackets.LOGIN:
       logger.clientLog("Player Logged in")
       break;
+    case audioPackets.CONTAINER:
+      logger.clientLog("Container Packet");
+      // Redirect to wss-server here
+      break;
     default:
       logger.clientLog("Unknown Packet! " + JSON.parse(data).id)
       break;
   }
 });
+
+exports.socket = ws;
