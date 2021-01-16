@@ -20,12 +20,10 @@ global.ws.on("message", function incoming(data) {
     case audioPackets.HEARTBEAT:
       logger.clientLog("Heartbeat");
       break;
-    case audioPackets.LOGIN:
-      logger.clientLog("Player Logged in");
-      break;
     case audioPackets.CONTAINER:
       logger.clientLog("Container Packet");
-      // Redirect to wss-server here
+      let containerPack = new audioPacketModels.PacketContainer(packet.uuid, packet.container);
+      audioFuncs.SendContainer(containerPack);
       break;
     case audioPackets.PLAYERINFO:
       logger.clientLog("PlayerInfo Packet");

@@ -9,10 +9,10 @@ class PacketContainer extends BasePacket {
     this.container = container;
   }
   getUniqueId() {
-    return uuid;
+    return this.uuid;
   }
   getContainer() {
-    return container;
+    return this.container;
   }
   getJSON() {
     let obj = {};
