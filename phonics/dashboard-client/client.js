@@ -6,7 +6,7 @@ var dashPackets = require("../utils/packetid").dashPackets;
 var audioPacketModels = require("../models/audio");
 var audioFuncs = require("../wss-server/funcs");
 
-global.ws = new WebSocket("ws://pal-jfk2:7892");
+global.ws = new WebSocket(process.env.DASH_WSS);
 
 global.ws.on("open", function open() {
   logger.clientLog("Connected to Dashboard");

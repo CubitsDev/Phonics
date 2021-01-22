@@ -3,7 +3,7 @@ const audioPackets = require("../utils/packetid").audioPackets;
 const audioPacketModels = require("../models/audio");
 const dashFuncs = require("../dashboard-client/funcs");
 
-const serverPort = 3000,
+const serverPort = process.env.WSS_PORT,
   http = require("http"),
   express = require("express"),
   app = express(),

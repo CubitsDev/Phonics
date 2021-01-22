@@ -1,3 +1,4 @@
+require('dotenv').config()
 const logger = require("./utils/logger");
 var pjson = require("./package.json");
 var dashClient = require("./dashboard-client/index");
