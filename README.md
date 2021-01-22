@@ -1,4 +1,4 @@
 # Phonics
 A new and improved Audio Server, built to tackle issues.
 
-Using NextJS and Sockets.io
+Using Js and ws for a websocket server
