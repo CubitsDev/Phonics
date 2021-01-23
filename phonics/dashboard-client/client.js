@@ -1,4 +1,5 @@
 const WebSocket = require("ws");
+const ReconnectingWebSocket = require("reconnectingwebsocket");
 const logger = require("../utils/logger");
 var wssServer = require("../wss-server/index");
 var audioPackets = require("../utils/packetid").audioPackets;
@@ -6,7 +7,7 @@ var dashPackets = require("../utils/packetid").dashPackets;
 var audioPacketModels = require("../models/audio");
 var audioFuncs = require("../wss-server/funcs");
 
-global.ws = new WebSocket(process.env.DASH_WSS);
+global.ws = new ReconnectingWebSocket(process.env.DASH_WSS);
 
 global.ws.on("open", function open() {
   logger.clientLog("Connected to Dashboard");

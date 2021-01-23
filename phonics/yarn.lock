@@ -417,6 +417,11 @@ raw-body@2.4.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
+reconnectingwebsocket@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/reconnectingwebsocket/-/reconnectingwebsocket-1.0.0.tgz#0b825babb37b670445c65aa7d3ed978300205444"
+  integrity sha1-C4Jbq7N7ZwRFxlqn0+2XgwAgVEQ=
+
 safe-buffer@5.1.2:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
