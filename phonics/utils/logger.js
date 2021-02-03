@@ -11,3 +11,7 @@ exports.serverLog = function (text) {
 exports.clientLog = function (text) {
   console.log(chalk.cyan("[Phonics Dashboard] " + text + ""));
 };
+
+exports.warningLog = function (text) {
+  console.log(chalk.yellow("[WARNING]" + text + ""));
+};
