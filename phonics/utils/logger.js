@@ -9,5 +9,13 @@ exports.serverLog = function (text) {
 };
 
 exports.clientLog = function (text) {
-  console.log(chalk.cyan("[Phonics Dashboard] " + text + ""));
+  console.log(chalk.blue("[Phonics Dashboard] " + text + ""));
+};
+
+exports.mqLog = function (text) {
+  console.log(chalk.blue("[Phonics MQ Consumer] " + text + ""));
+};
+
+exports.warningLog = function (text) {
+  console.log(chalk.yellow("[WARNING]" + text + ""));
 };
