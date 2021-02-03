@@ -15,7 +15,8 @@ global.ws.onopen = function open() {
   wssServer.start();
 };
 
-global.ws.onmessage = function incoming(data) {
+global.ws.onmessage = function incoming(event) {
+  let data = event.data
   let packet = JSON.parse(data);
   switch (packet.id) {
     case audioPackets.HEARTBEAT:
