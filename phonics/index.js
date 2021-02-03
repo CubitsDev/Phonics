@@ -12,7 +12,7 @@ if (!process.env.DASH_LEGACY) {
 } else {
     logger.warningLog("Phonics is running with Dashboard legacy mode! Did you mean to do this?")
     logger.warningLog("Halting for 5 seconds before booting")
-    setTimeout(dashClient.dashConnect(), 5000)
+    setTimeout(() => dashClient.dashConnect(), 5000)
 }
 
 exports.playerMap = playerMap;

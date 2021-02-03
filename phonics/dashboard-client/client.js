@@ -1,5 +1,5 @@
 const WebSocket = require("ws");
-const ReconnectingWebSocket = require("reconnectingwebsocket");
+var ReconnectingWebSocket = require('rws').ReconnectingWebSocket;
 const logger = require("../utils/logger");
 var wssServer = require("../wss-server/index");
 var audioPackets = require("../utils/packetid").audioPackets;
@@ -9,13 +9,13 @@ var audioFuncs = require("../wss-server/funcs");
 
 global.ws = new ReconnectingWebSocket(process.env.DASH_WSS);
 
-global.ws.on("open", function open() {
+global.ws.onopen = function open() {
   logger.clientLog("Connected to Dashboard");
   ws.send(JSON.stringify({ id: 22, type: "audioserver" }));
   wssServer.start();
-});
+};
 
-global.ws.on("message", function incoming(data) {
+global.ws.onmessage = function incoming(data) {
   let packet = JSON.parse(data);
   switch (packet.id) {
     case audioPackets.HEARTBEAT:
@@ -45,4 +45,4 @@ global.ws.on("message", function incoming(data) {
       logger.clientLog("Unknown Packet! " + packet.id);
       break;
   }
-});
+};
