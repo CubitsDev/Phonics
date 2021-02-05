@@ -2,11 +2,13 @@ require('dotenv').config()
 const logger = require("./utils/logger");
 var pjson = require("./package.json");
 var dashClient = require("./dashboard-client/index");
+var wssServer = require("./wss-server/index");
 var mqConsumer = require("./rabbit-mq-consumer/index");
 var playerMap = new Map();
 
 logger.primaryLog("Starting Phonics v" + pjson.version);
 if (!process.env.DASH_LEGACY | process.env.DASH_LEGACY === false) {
+    wssServer.start();
     mqConsumer.startConsumer();
 } else {
     logger.warningLog("Phonics is running with Dashboard legacy mode! Did you mean to do this?")
