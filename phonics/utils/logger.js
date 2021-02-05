@@ -13,7 +13,7 @@ exports.clientLog = function (text) {
 };
 
 exports.mqLog = function (text) {
-  console.log(chalk.blue("[Phonics MQ Consumer] " + text + ""));
+  console.log(chalk.blueBright("[Phonics MQ Consumer] " + text + ""));
 };
 
 exports.warningLog = function (text) {
