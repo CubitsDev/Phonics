@@ -6,8 +6,7 @@ var mqConsumer = require("./rabbit-mq-consumer/index");
 var playerMap = new Map();
 
 logger.primaryLog("Starting Phonics v" + pjson.version);
-
-if (!process.env.DASH_LEGACY) {
+if (!process.env.DASH_LEGACY | process.env.DASH_LEGACY === false) {
     mqConsumer.startConsumer();
 } else {
     logger.warningLog("Phonics is running with Dashboard legacy mode! Did you mean to do this?")
