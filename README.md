@@ -10,5 +10,13 @@ Whilst functionality remains to connect to dashboard, as we aren't actively usin
 ```
 DASH_WSS=
 WSS_PORT=
-DASH_LEGACY=
+DASH_LEGACY= // Only populate for Legacy mode
+AMQP_URL=
+AMQP_USER=
+AMQP_PASS=
+MONGO_USER=
+MONGO_PASS=
+MONGO_ADDRESS=
+MONGO_PORT=
+MONGO_DB=
 ```
