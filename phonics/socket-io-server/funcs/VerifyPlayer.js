@@ -19,7 +19,6 @@ exports.VerifyPlayer = function (uuid, username, token, server) {
   let clientObj = new ClientModel(token, client, uuid, username);
   clientStore.set(uuid, clientObj);
   let acceptPack = new audioPacketModels.PacketClientAccept(server);
-  console.log(acceptPack.getJSON())
   client.emit("message", JSON.stringify(acceptPack.getJSON()));
   authMap.delete(token);
 };

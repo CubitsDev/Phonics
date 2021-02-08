@@ -1,6 +1,6 @@
 const logger = require("../utils/logger");
 var amqp = require('amqplib/callback_api');
-//var audioFuncs = require("../wss-server/funcs");
+var audioFuncs = require("../socket-io-server/funcs");
 var audioPacketModels = require("../models/audio");
 var audioPackets = require("../utils/packetid").audioPackets;
 var amqp_url = process.env.AMQP_URL
@@ -20,7 +20,7 @@ amqp.connect(amqp_url, opt, function (err, conn) {
         case audioPackets.CONTAINER:
             logger.mqLog("Container Packet");
             let containerPack = new audioPacketModels.PacketContainer(packet.uuid, packet.container);
-            //audioFuncs.SendContainer(containerPack);
+            audioFuncs.SendContainer(containerPack)
             break;
           default:
               break;
