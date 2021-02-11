@@ -7,7 +7,7 @@ const mongoFuncs = require('../mongo/funcs/index');
 let authMap = new Map();
 
 io.on("connection", (socket) => {
-  socket.on("packet", (message) => {
+  socket.on("packet", async (message) => {
     let packet = JSON.parse(message);
     logger.serverLog(JSON.stringify(message));
     switch (packet.id) {
@@ -16,7 +16,7 @@ io.on("connection", (socket) => {
           packet.version,
           packet.token
         );
-        authMap.set(login.getToken(), socket);
+        await authMap.set(login.getToken(), socket);
         mongoFuncs.checkForToken(packet.token)
         break;
       case audioPackets.HEARTBEAT:
@@ -25,6 +25,9 @@ io.on("connection", (socket) => {
         logger.serverLog("Unrecognised Packet ID: " + packet.id);
         break;
     }
+  })
+  socket.on("shows", (msg) => {
+    mongoFuncs.getTodaysSchedule(socket);
   })
 });
 httpServer.listen(process.env.WSS_PORT);

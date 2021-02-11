@@ -1,5 +1,5 @@
 var audioPacketModels = require("../../models/audio");
-var authMap = require("../server").authMap;
+var authMap = require("../server");
 var logger = require("../../utils/logger");
 var ClientModel = require("../../models/ClientModel").ClientModel;
 var clientStore = require("../../utils/ClientStore").ClientStore;
@@ -7,7 +7,7 @@ var clientStore = require("../../utils/ClientStore").ClientStore;
 exports.VerifyPlayer = function (uuid, username, token, server) {
   let client;
   try {
-    client = authMap.get(token);
+    client = authMap.authMap.get(token);
   } catch (error) {
     logger.serverLog("Error!" + error);
   }
@@ -20,5 +20,5 @@ exports.VerifyPlayer = function (uuid, username, token, server) {
   clientStore.set(uuid, clientObj);
   let acceptPack = new audioPacketModels.PacketClientAccept(server);
   client.emit("message", JSON.stringify(acceptPack.getJSON()));
-  authMap.delete(token);
+  authMap.authMap.delete(token);
 };
