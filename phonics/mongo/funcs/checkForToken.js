@@ -4,7 +4,7 @@ require('../models');
 var socketFuncs = require('../../socket-io-server/funcs/index')
 var logger = require('../../utils/logger');
 exports.checkForToken = function (token) {
-    PlayerModel.findOne({online: true, "onlineData.audioToken": token}, function (err, res) {
+    PlayerModel.findOne({online: true, "onlineData.audioToken": token}, {online: true, onlineData: true}, function (err, res) {
         if (err) {
             logger.mongoLog('Error running checkForToken: ' + err);
         }

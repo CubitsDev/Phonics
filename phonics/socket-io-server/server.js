@@ -4,6 +4,7 @@ const logger = require("../utils/logger");
 const audioPackets = require("../utils/packetid").audioPackets;
 const audioPacketModels = require("../models/audio");
 const mongoFuncs = require('../mongo/funcs/index');
+const mc_direct_channel = require('../rabbit-mq-consumer/worker').mc_direct_channel;
 let authMap = new Map();
 
 io.on("connection", (socket) => {
@@ -16,8 +17,9 @@ io.on("connection", (socket) => {
           packet.version,
           packet.token
         );
-        await authMap.set(login.getToken(), socket);
-        mongoFuncs.checkForToken(packet.token)
+        authMap.set(login.getToken(), socket);
+        mongoFuncs.checkForToken(packet.token);
+        mc_direct_channel.publish('mc_direct', 'WDW1', Buffer.from(JSON.stringify({response:true})));
         break;
       case audioPackets.HEARTBEAT:
         break;
