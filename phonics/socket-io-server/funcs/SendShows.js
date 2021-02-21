@@ -6,6 +6,7 @@ exports.SendShows = function (socket, shows) {
     let newShows = [];
     shows.forEach(element => {
         var info = showEnum.find((x) => x.code == element.show);
+        if (info === undefined) info = showEnum[0];
         let show = {};
         Object.assign(show, {time: element.time})
         Object.assign(show, {park: info.park})

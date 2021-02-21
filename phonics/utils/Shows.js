@@ -153,5 +153,10 @@ exports.Shows = [
             park: "dhs",
             full: `Jingle Bell, Jingle BAM! Holiday Fireworks Spectacular`,
             code: "jbjb"
+        },
+        {
+            park: "",
+            full: "Special Event",
+            code: "special"
         }
 ]
